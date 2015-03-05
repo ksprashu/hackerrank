@@ -1,0 +1,27 @@
+#!/usr/local/bin/python3
+
+from sys import stdin
+
+list = []
+for line in stdin:
+    list.append(line.strip('\n'))
+
+count = int(list[0])
+list = list[1:]
+
+elemMap = {}
+for row in list:
+    rowList = [a for a in row]
+    rowSet = set(rowList)
+    for elem in rowSet:
+        if elem in elemMap.keys():
+            elemMap[elem] += 1
+        else:
+            elemMap[elem] = 1
+
+gemCount = 0
+for key in elemMap:
+    if elemMap[key] == count:
+        gemCount += 1
+
+print(str(gemCount))
